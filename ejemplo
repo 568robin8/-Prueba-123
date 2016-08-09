@@ -3,3 +3,40 @@ esta es la segunda prueba para actualizar
 bueno esto es la segunda vez
 ahora si este es el final para este 123
 
+
+
+    EXEC = 1;
+        FILE *tmp;
+
+        if((tmp = fopen(Top(*c),"r"))){
+            char Linea[300];
+            while(fgets(Linea,300,tmp)!=NULL){
+
+                if(Linea[0]=='#'){
+                }else if(Linea[0]=='\n')
+                {
+
+                }else if(strcasecmp(Linea,"exit")==0)
+                {
+                    exit(0);
+                }else{
+                    int fin_Linea = strlen(Linea)-1;
+                    if(Linea[fin_Linea]=='\n'){
+                        Linea[fin_Linea] = '\0';
+                    }
+
+                    Cola cola;
+                    CrearLista(&cola);
+
+                    ObtenerInstrucciones(&cola,Linea," ");
+                    RealizarAcciones(&cola);
+
+                }
+
+            }
+            fclose(tmp);
+        }else{
+            printf("#El Archivo no existe!!!\n");
+        }
+
+
